@@ -79,4 +79,12 @@ class EmployeServiceTest {
         List<Employe> employees = employeeService.getAllEmployes();
         Assert.assertNotNull(employees);
     }
+    @Test
+    public void ajouterEmploye() throws ParseException {
+
+        Employe em = new Employe("Test", "Test", "test.test@esprit.tn",true,Role.INGENIEUR);
+        int employeId = employeeService.ajouterEmploye(em);
+        assertEquals("check ajout employé ",1,employeId);
+    }
+
 }
