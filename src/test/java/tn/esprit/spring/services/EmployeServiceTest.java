@@ -1,6 +1,21 @@
 package tn.esprit.spring.services;
 
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
+import org.junit.Assert;
+import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+import tn.esprit.spring.entities.*;
+import tn.esprit.spring.repository.*;
 
+import static org.junit.Assert.assertEquals;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -59,4 +74,9 @@ class EmployeServiceTest {
     }
 
 
+    @Test
+    void getAllEmployes() {
+        List<Employe> employees = employeeService.getAllEmployes();
+        Assert.assertNotNull(employees);
+    }
 }
