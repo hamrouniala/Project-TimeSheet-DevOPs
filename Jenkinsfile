@@ -29,7 +29,7 @@ pipeline {
         stage("clean and packaging") {
             steps
             {
-                bat "mvn clean package "
+                mvn "mvn clean package"
             }
         }
     }
