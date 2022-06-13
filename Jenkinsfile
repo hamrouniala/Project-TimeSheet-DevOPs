@@ -17,7 +17,7 @@ pipeline {
         {
             steps
             {
-                sh "mvn compile"
+                sh "mvn clean"
             }
         }
 
@@ -25,7 +25,7 @@ pipeline {
         {
             steps
             {
-                sh "mvn package"
+                sh "mvn test"
             }
         }
 
@@ -33,14 +33,19 @@ pipeline {
         {
             steps
             {
-                sh "mvn test "
+                sh "mvn package "
             }
         }
 
         stage("clean and packaging") {
             steps
             {
-                mvn "mvn clean install"
+                sh "mvn clean package -DskipTests deploy:deploy-file -DgroupId=com.esprit.spring -DartifactId=Timesheet -Dversion=1.0 -DgeneratePom=true -Dpackaging=war -DrepositoryId=deploymentRepo -Durl=http://localhost:8081/repository/maven-releases/ -Dfile=target/Timesheet-1.0.war"
+            }
+        }
+    }
+}
+"
             }
         }
     }
