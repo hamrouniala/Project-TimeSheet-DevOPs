@@ -40,7 +40,7 @@ pipeline {
         stage("clean and packaging") {
             steps
             {
-                mvn "mvn clean package"
+                mvn "mvn package"
             }
         }
     }
