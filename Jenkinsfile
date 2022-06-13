@@ -13,6 +13,13 @@ pipeline {
                git branch:'master', url:"https://github.com/hamrouniala/Project-TimeSheet-DevOPs"
             }
         }
+         stage("clean install")
+        {
+            steps
+            {
+                sh "mvn clean install"
+            }
+        }
 
         stage("Build")
         {
