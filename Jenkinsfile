@@ -28,15 +28,7 @@ pipeline {
                 sh "mvn test"
             }
         }
-         stage("Test Sonar")
-        {
-            steps
-            {
-                sh "mvn sonar:sonar"
-            }
-        }
-
-
+         
         stage(" Packaging")
         {
             steps
@@ -48,7 +40,16 @@ pipeline {
         stage("Deploy artifact to nexus") {
             steps
             {
-                sh "mvn clean package -DskipTests deploy:deploy-file -DgroupId=com.esprit.spring -DartifactId=Timesheet -Dversion=1.0 -DgeneratePom=true -Dpackaging=war -DrepositoryId=deploymentRepo -Durl=http://localhost:8081/repository/maven-releases/ -Dfile=target/Timesheet-1.0.war"
+                sh ''' ./mvnw deploy:deploy-file \
+                             -DgroupId=tn.esprit \
+                             -DartifactId=Timesheet \
+                             -Dversion=1.0 \
+                             -DgeneratePom=true \
+                             -Dpackaging=war \
+                             -DrepositoryId=deploymentRepo \
+                             -Durl=http://localhost:8081/repository/maven-releases/ \
+                             -Dfile=target/Timesheet-1.0.war
+                    '''
             }
         }
     }
