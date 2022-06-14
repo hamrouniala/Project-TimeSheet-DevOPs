@@ -40,6 +40,8 @@ pipeline {
         stage("Deploy artifact to nexus") {
             steps
             {
+                sh "ls .mvn "
+                sh "chmod +x mvnw
                 sh ''' ./mvnw deploy:deploy-file \
                              -DgroupId=tn.esprit \
                              -DartifactId=Timesheet \
