@@ -1,9 +1,7 @@
 
 pipeline {
     agent any
-    tools {
-        maven '3.6.3' 
-    }
+   
     
     stages {
         stage('Cloning Project from Git')
@@ -29,6 +27,14 @@ pipeline {
             }
         }
          
+        
+        stage(" Test SOnar")
+        {
+            steps
+            {
+                sh "mvn sonar:sonar"
+            }
+        }
         stage(" Packaging")
         {
             steps
@@ -41,8 +47,8 @@ pipeline {
             steps
             {
                 sh "ls .mvn "
-                sh "chmod +x mvnw"
-                sh ''' ./mvnw deploy:deploy-file \
+                sh "chmod +x mvn"
+                sh ''' mvn deploy:deploy-file \
                              -DgroupId=tn.esprit \
                              -DartifactId=Timesheet \
                              -Dversion=1.0 \
