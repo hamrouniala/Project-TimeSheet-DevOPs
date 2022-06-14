@@ -28,6 +28,14 @@ pipeline {
                 sh "mvn test"
             }
         }
+         stage("Test Sonar")
+        {
+            steps
+            {
+                sh "mvn sonar:sonar"
+            }
+        }
+
 
         stage(" Packaging")
         {
