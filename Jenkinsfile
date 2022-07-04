@@ -52,13 +52,6 @@ pipeline {
             }
         }
 
-        stage("Deploy artifact to nexus") {
-            steps
-            {
-          sh "mvn clean package -DskipTests deploy:deploy-file -DgroupId=com.esprit.spring -DartifactId=Timesheet -Dversion=1.0 -DgeneratePom=true -Dpackaging=war -DrepositoryId=deploymentRepo -Durl=http://localhost:8081/repository/maven-releases/ -Dfile=target/Timesheet-1.0.war"
-         
-        }
-
    }
     stage('Building our image') {
                steps {
