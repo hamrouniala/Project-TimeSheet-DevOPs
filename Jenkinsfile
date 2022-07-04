@@ -51,8 +51,8 @@ pipeline {
             }
         }
 
-   }
-    stage('Building our image') {
+   
+        stage('Building our image') {
                steps {
                    script {
                        sh "docker version"
